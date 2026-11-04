@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  namespace: demo
+  name: demo-replica
+  labels:
+    env: prod
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      env: prod
+
+  template:
+    metadata:
+      labels:
+        env: prod
+
+    spec:
+      containers:
+      - name: demo-container
+        image: nginx:latest
+        ports:
